@@ -1,4 +1,4 @@
-# TPE Entrega1 López-Orsatti
+# TPE Entrega 1 López-Orsatti
 
 ## Gráfico
 ![gráfico_relaciones](https://github.com/user-attachments/assets/57a930b4-db0c-4588-a996-d6f4c9af8207)
@@ -14,3 +14,5 @@ En la tabla del avión está almacenada la información de: id de avión, modelo
 En la tabla del piloto está almacenada la información de: id del piloto, nombre, dni, fecha de nacimiento, número de licencia, email, dirección y teléfono.
 
 La tabla principal es la de vuelo, en la cual relacionamos el id del piloto con la tabla del piloto, y el id del avión con la tabla del avión. 
+
+Entrega realizada por María Lucía López Cáceres, dni 46555036 y Aylen Orsatti, dni 46555124.

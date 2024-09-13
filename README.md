@@ -1,7 +1,8 @@
 # TPE Entrega 1 López-Orsatti
 
 ## Gráfico
-![gráfico_relaciones](https://github.com/user-attachments/assets/57a930b4-db0c-4588-a996-d6f4c9af8207)
+![gráfico_relaciones](https://github.com/user-attachments/assets/44d555d9-4b62-4d11-be18-485e28ca9598)
+
 
 ## Explicación
 

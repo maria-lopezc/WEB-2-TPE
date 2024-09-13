@@ -5,7 +5,7 @@
 
 ## Explicación
 
-Nuestra base de datos trata de una aerolínea donde se guarda la información de los vuelos y pilotos, donde un vuelo tiene un unico piloto.
+Nuestra base de datos  donde se guarda la información de los vuelos y pilotos, donde un vuelo tiene un unico piloto.
 
 En el tabla de vuelos está almacenada la información de: id de vuelo, id del piloto, origen y destino del viaje, cantidad de pasajeros y duración del vuelo.
 

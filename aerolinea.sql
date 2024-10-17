@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-09-2024 a las 00:13:36
+-- Tiempo de generación: 17-10-2024 a las 20:46:29
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,6 +20,18 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `aerolinea`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `login`
+--
+
+CREATE TABLE `login` (
+  `id` int(11) NOT NULL,
+  `email` varchar(250) NOT NULL,
+  `contrasenia` char(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -45,9 +57,7 @@ CREATE TABLE `pilotos` (
 INSERT INTO `pilotos` (`id_piloto`, `nombre`, `dni`, `fecha_nacimiento`, `gmail`, `direccion`, `telefono`, `nro_licencia`) VALUES
 (1, 'Jorge Perez', 30598140, '1983-03-19', 'jorgeperez@gmail.com', 'Panamá 150, Ezeiza', 112450328, 38820543),
 (2, 'Jose Ramirez', 35378200, '1985-06-08', 'ramirezj@gmail.com', 'Darragueira 157, CABA', 21474647, 22010255),
-(3, 'Maria Fernandez', 37346920, '1987-08-26', 'MariaFerj@gmail.com', 'AV.Avellaneda 1005, CABA', 249484634, 16345926),
-(4, 'Pablo Sanchez', 31568863, '1985-06-08', 'PabloSanchez455j@gmail.com', 'Corrientes 1344, La Matanza', 542175313, 389000234),
-(5, 'Juan Retamoso', 30256347, '1984-07-18', 'Retamoso122@gmail.com', 'Sarmiento 51, Tandil', 1119456723, 17845678);
+(4, 'Pablo Sanchez', 31568863, '1985-06-08', 'PabloSanchez455j@gmail.com', 'Corrientes 1344, La Matanza', 542175313, 389000234);
 
 -- --------------------------------------------------------
 
@@ -61,7 +71,7 @@ CREATE TABLE `vuelos` (
   `origen` text NOT NULL,
   `destino` text NOT NULL,
   `cant_pasajeros` int(11) NOT NULL,
-  `duracion_vuelo` time NOT NULL
+  `duracion_vuelo` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
@@ -69,16 +79,20 @@ CREATE TABLE `vuelos` (
 --
 
 INSERT INTO `vuelos` (`id_vuelos`, `id_piloto`, `origen`, `destino`, `cant_pasajeros`, `duracion_vuelo`) VALUES
-(1, 1, 'Ezeiza, Arg', 'Montevideo, Uru', 200, '01:00:00'),
-(2, 2, 'Aeroparque, Arg', 'Rio De Janeiro, Br', 150, '02:50:00'),
-(3, 3, 'Salta, Arg', 'Lima, Pe', 300, '03:00:00'),
-(4, 1, 'Montevideo, Uru', 'Ezeiza, Arg', 100, '01:00:00'),
-(5, 4, 'Madrid, Es', 'París, Fra', 200, '02:07:00'),
-(6, 5, 'Miami, EEUU', 'Montreal, Ca', 130, '03:25:00');
+(1, 1, 'Ezeiza, Arg', 'Montevideo, Uru', 200, '1'),
+(2, 2, 'Aeroparque, Arg', 'Rio De Janeiro, Br', 150, '2:30'),
+(4, 1, 'Montevideo, Uru', 'Ezeiza, Arg', 100, '1');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `login`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indices de la tabla `pilotos`
@@ -102,16 +116,22 @@ ALTER TABLE `vuelos`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `login`
+--
+ALTER TABLE `login`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `pilotos`
 --
 ALTER TABLE `pilotos`
-  MODIFY `id_piloto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_piloto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `vuelos`
 --
 ALTER TABLE `vuelos`
-  MODIFY `id_vuelos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_vuelos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restricciones para tablas volcadas

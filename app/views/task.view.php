@@ -1,4 +1,6 @@
 <?php
+require_once 'urls.php';
+
 class TaskView{
     function formAgregar($pilotos){ 
         ?>
@@ -50,12 +52,13 @@ class TaskView{
     }
     
     function showVuelo($piloto, $vuelo){
+        $base=baseurl();
         echo '<tr><td style="font-size:20px">'.$piloto->nombre.'</td>
             <td style="font-size:20px">'.$vuelo->origen.'</td> 
             <td style="font-size:20px">'.$vuelo->destino.'</td> 
-            <td ><a style="font-size:20px" href="/Web%202/TPE/verVuelo/'.$vuelo->id_vuelos.'">Ver más</a></td> 
-            <td><a style="font-size:20px" href="../TPE/editarVuelo/'.$vuelo->id_vuelos.'">Editar<a></td> 
-            <td><a style="font-size:20px" href="eliminarVuelo/'.$vuelo->id_vuelos.'" type="button">Borrar</a></td>
+            <td ><a style="font-size:20px" href="'.$base.'verVuelo/'.$vuelo->id_vuelos.'">Ver más</a></td> 
+            <td><a style="font-size:20px" href="'.$base.'editarVuelo/'.$vuelo->id_vuelos.'">Editar<a></td> 
+            <td><a style="font-size:20px" href="'.$base.'eliminarVuelo/'.$vuelo->id_vuelos.'" type="button">Borrar</a></td>
             </tr> ';
     }
 
@@ -64,6 +67,7 @@ class TaskView{
     }
 
     function showVuelosCompleto($piloto, $vuelo){
+        $base=baseurl();
         ?>    
         <h1>VUELOS</h1>
     
@@ -81,8 +85,8 @@ class TaskView{
         <td style="font-size:20px"><?php echo $vuelo->destino ?></td> 
         <td style="font-size:20px"><?php echo $vuelo->cant_pasajeros ?></td> 
         <td style="font-size:20px"><?php echo $vuelo->duracion_vuelo ?></td>
-        <td><a style="font-size:20px" href="../editarVuelo/<?php echo $vuelo->id_vuelos?>">Editar<a></td>
-        <td><a style="font-size:20px" href="/Web%202/TPE/eliminarVuelo/<?php echo $vuelo->id_vuelos?>" type="button">Borrar</a></td> 
+        <td><a style="font-size:20px" href="<?php echo $base ?>editarVuelo/<?php echo $vuelo->id_vuelos?>">Editar<a></td>
+        <td><a style="font-size:20px" href="<?php echo $base ?>eliminarVuelo/<?php echo $vuelo->id_vuelos?>" type="button">Borrar</a></td> 
         </tr>
         </table>
     <?php
@@ -119,9 +123,11 @@ class TaskView{
     }
 
     function formEditarVuelos($id, $pilotos, $origen, $destino, $pasajeros, $duracion){ 
+        
+        $base=baseurl()."editoVuelo/".$id;
         ?>
          <h3>Editar Vuelo:</h3>
-           <form action="/Web%202/TPE/editoVuelo/<?php echo $id ?>" method="post">
+           <form action="<?php echo $base ?>" method="post">
             <label for="piloto">Piloto:</label> 
                 <select name='piloto' id="piloto">
                     <?php foreach ($pilotos as $piloto){?>
@@ -140,9 +146,10 @@ class TaskView{
     } 
     
     function formEditarPiloto($id, $nombre, $dni, $fecha_nacimiento, $gmail, $direccion, $telefono, $nro_licencia){ 
+        $base=baseurl()."editoPiloto/".$id;
         ?>
          <h3>Editar Piloto:</h3>
-           <form action="/Web%202/TPE/editoPiloto/<?php echo $id ?>" method="post">
+           <form action="<?php echo $base ?>" method="post">
             Nombre:<input required type="text" value="<?php echo $nombre?>" name="nombre" id="">
             DNI:<input required type="text" value="<?php echo $dni?>" name="dni" id="">
             Fecha de nacimiento:<input required type="date" value="<?php echo $fecha_nacimiento?>" name="fecha_nac" id="">

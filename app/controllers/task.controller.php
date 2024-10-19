@@ -1,6 +1,7 @@
 <?php
 require_once './app/models/task.model.php';
 require_once './app/views/task.view.php';
+require_once 'urls.php';
 
 class TaskController{
     private $model;
@@ -63,7 +64,8 @@ class TaskController{
 
             $this->model->agregarVuelo($id_piloto, $origen, $destino, $cant_pasajeros, $duracion);
     
-            $this->showHome();
+            $base=baseurl()."home";
+            header("Location: ".$base);
         }
     }
 
@@ -78,13 +80,17 @@ class TaskController{
             $nro_licencia=$_POST['licencia'];
     
             $this->model->agregarPiloto($nombre, $dni, $fecha_nacimiento, $gmail, $direccion, $telefono, $nro_licencia);
-            $this->showHome();
+            
+            $base=baseurl()."home";
+            header("Location: ".$base);
         }
     }
 
     function removeVuelo($id){
         $this->model->eliminarVuelo($id);
-        header("Location: /Web%202/TPE/home");
+
+        $base=baseurl()."home";
+        header("Location: ".$base);
     }
 
     function removePiloto($id){
@@ -93,7 +99,9 @@ class TaskController{
             $this->model->eliminarVuelo($vuelo->id_vuelos);
         }
         $this->model->eliminarPiloto($id);
-        header("Location: /Web%202/TPE/home");
+
+        $base=baseurl()."verPilotos";
+        header("Location: ".$base);
     }
 
     function editVuelo($id){
@@ -117,7 +125,9 @@ class TaskController{
             $duracion=$_POST['duracion'];
 
             $this->model->editarVuelo($id, $id_piloto, $origen, $destino, $cant_pasajeros, $duracion);
-            header("Location: /Web%202/TPE/home");
+            
+            $base=baseurl()."home";
+            header("Location: ".$base);
         }
     }
 
@@ -146,7 +156,9 @@ class TaskController{
             $nro_licencia=$_POST['licencia'];
 
             $this->model->editarPiloto($id, $nombre, $dni, $fecha_nacimiento, $gmail, $direccion, $telefono, $nro_licencia);
-            header("Location: /Web%202/TPE/home");
+
+            $base=baseurl()."home";
+            header("Location: ".$base);
         }
     }
 }

@@ -14,7 +14,7 @@ class TaskModel{
     }
 
     public function getVuelos(){
-        $query=$this->db->prepare("select * from vuelos");
+        $query=$this->db->prepare("SELECT * FROM `vuelos`");
         $query->execute();
         $vuelos=$query->fetchAll(PDO::FETCH_OBJ);
         return $vuelos;

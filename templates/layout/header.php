@@ -1,4 +1,10 @@
-<a href='/Web%202/TPE/home'>Volver</a>
-<a href='/Web%202/TPE/verPilotos'>Pilotos</a>
-<a href='/Web%202/TPE/showLogin'>Login</a>
-<a href='/Web%202/TPE/logout'>Logout</a>
+<?php
+require_once 'urls.php';
+$base=baseurl();
+
+echo "<a href='".$base."home'>Home</a>
+<a href='".$base."verPilotos'>Pilotos</a>
+<a href='".$base."showLogin'>Login</a>
+<a href='".$base."logout'>Logout</a>";
+
+?>

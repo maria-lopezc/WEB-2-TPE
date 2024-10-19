@@ -1,7 +1,7 @@
 <?php
 require_once './app/models/user.model.php';
 require_once './app/views/auth.view.php';
-require_once 'hashear.php';
+require_once 'urls.php';
 
 class AuthController{
     private $model;
@@ -13,6 +13,7 @@ class AuthController{
     }
 
     public function showLogin(){
+        baseurl();
         return $this->view->showLogin();
     }
 
@@ -34,8 +35,9 @@ class AuthController{
             $_SESSION['ID_USER']=$userFromDB->id;
             $_SESSION['EMAIL_USER']=$userFromDB->email;
             $_SESSION['LAST_ACTIVITY']=time();
-
-            header('Location: /Web%202/TPE/home');
+            
+            $base=baseurl().'home';
+            header('Location: '.$base);
         } else{
             return $this->view->showLogin('Email o contraseña incorrectas');
         }
@@ -44,7 +46,9 @@ class AuthController{
     public function logout(){
         session_start();
         session_destroy();
-        header('Location: /Web%202/TPE/home');
+
+        $base=baseurl().'home';
+        header('Location: '.$base);
     }
 
     public function showSignUp(){
@@ -65,6 +69,8 @@ class AuthController{
         $passHash=$this->model->encriptar($contrasenia);
 
         $this->model->registrar($email, $passHash);
-        header('Location: /Web%202/TPE/showLogin');
+
+        $base=baseurl().'showLogin';
+        header('Location: '.$base);
     }
 }

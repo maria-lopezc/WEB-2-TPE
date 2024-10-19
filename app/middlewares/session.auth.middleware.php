@@ -1,4 +1,5 @@
 <?php
+require_once "urls.php";
 
 function sessionAuthMiddleware($response){
     session_start();
@@ -7,7 +8,8 @@ function sessionAuthMiddleware($response){
         $response->user->id=$_SESSION['ID_USER'];
         $response->user->email=$_SESSION['EMAIL_USER'];
     } else{
-        header('Location: /Web%202/TPE/showLogin');
+        $redirect=baseurl()."showLogin/";
+        header('Location: '.$redirect);
         die();
     }
 }

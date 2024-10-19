@@ -1,0 +1,17 @@
+<?php require 'templates/layout/header.phtml'; ?>
+<h3>Editar Vuelo:</h3>
+           <form action="<?php echo $base ?>" method="post">
+            <label for="piloto">Piloto:</label> 
+                <select name='piloto' id="piloto">
+                    <?php foreach ($pilotos as $piloto):?>
+                <option value="<?= $piloto->id_piloto ?>"><?= $piloto->nombre ?></option>
+                    <?php endforeach ?>
+                </select>
+            
+            Origen:<input required type="text" value="<?= $origen ?>" name="origen" id="">
+            Destino:<input required type="text" value="<?= $destino ?>" name="destino" id="">
+            Cantidad de Pasajeros:<input required type="number" value="<?= $pasajeros ?>" name="cant_pasajeros" id="">
+            Duración (horas): <input required type="text" value="<?= $duracion ?>" name="duracion" id="">
+            
+            <button type="submit">Enviar</button>
+    </form>

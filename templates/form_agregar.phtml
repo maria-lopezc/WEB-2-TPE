@@ -1,0 +1,16 @@
+<h3>Añadir Vuelo:</h3>
+    <form action="agregar" method="post">
+        <label for="piloto">Piloto:</label> 
+        <select name='piloto' id="piloto">
+            <?php foreach ($pilotos as $piloto){?>
+                <option value="<?= $piloto->id_piloto ?>"><?= $piloto->nombre ?></option>
+            <?php } ?>
+        </select>
+            
+    Origen:<input required type="text" name="origen" id="">
+    Destino:<input required type="text" name="destino" id="">
+    Cantidad de Pasajeros:<input required type="number" name="cant_pasajeros" id="">
+    Duración (horas): <input required type="text" name="duracion" id="">
+            
+    <button type="submit">Enviar</button>
+    </form>

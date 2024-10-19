@@ -1,0 +1,12 @@
+<?php require 'templates/layout/header.phtml'; ?>
+<h3>Editar Piloto:</h3>
+           <form action="<?= $base ?>" method="post">
+            Nombre:<input required type="text" value="<?= $nombre?>" name="nombre" id="">
+            DNI:<input required type="text" value="<?= $dni?>" name="dni" id="">
+            Fecha de nacimiento:<input required type="date" value="<?= $fecha_nacimiento?>" name="fecha_nac" id="">
+            Gmail: <input required type="text" value="<?= $gmail?>" name="gmail" id="">
+            Dirección: <input required type="text" value="<?= $direccion?>" name="direccion" id="">
+            Telefono: <input required type="number" value="<?= $telefono?>" name="telefono" id="">
+            Número de Licencia: <input required type="number" value="<?=$nro_licencia?>" name="licencia" id="">
+            <button type="submit">Enviar</button>
+        </form>

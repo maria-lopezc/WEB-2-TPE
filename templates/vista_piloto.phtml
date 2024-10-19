@@ -1,0 +1,28 @@
+<?php require 'templates/layout/header.phtml'; ?>
+
+<h1>PILOTOS</h1>
+    <table>
+        <tr>
+            <td style="font-size: 25px; color: red;">Nombre</td>
+            <td style="font-size: 25px; color: red;">DNI</td>
+            <td style="font-size: 25px; color: red;">Fecha de Nacimiento</td>
+            <td style="font-size: 25px; color: red;">Email</td>
+            <td style="font-size: 25px; color: red;">Dirección</td>
+            <td style="font-size: 25px; color: red;">Teléfono</td>
+            <td style="font-size: 25px; color: red;">Número de Licencia</td>
+        </tr>
+
+<?php foreach($pilotos as $piloto): ?>
+        <tr><td style="font-size:20px"><?=$piloto->nombre?></td>
+            <td style="font-size:20px"><?=$piloto->dni?></td> 
+            <td style="font-size:20px"><?=$piloto->fecha_nacimiento?></td> 
+            <td style="font-size:20px"><?=$piloto->gmail?></td> 
+            <td style="font-size:20px"><?=$piloto->direccion?></td> 
+            <td style="font-size:20px"><?=$piloto->telefono?></td> 
+            <td style="font-size:20px"><?=$piloto->nro_licencia?></td>
+            <td><a style="font-size:20px" href="vuelosPiloto/<?=$piloto->id_piloto?>">Ver vuelos</td>
+            <td><a style="font-size:20px" href="editarPiloto/<?=$piloto->id_piloto?>">Editar<a></td>
+            <td><a style="font-size:20px" href="eliminarPiloto/<?=$piloto->id_piloto?>" type="button">Borrar</a></td>
+            </tr> 
+<?php endforeach ?>
+    </table>

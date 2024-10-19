@@ -3,7 +3,6 @@ require_once './app/controllers/task.controller.php';
 require_once './app/controllers/auth.controller.php';
 require_once './app/libs/response.php';
 require_once './app/middlewares/session.auth.middleware.php';
-require_once './templates/layout/header.php';
 
 $res=new Response();
 

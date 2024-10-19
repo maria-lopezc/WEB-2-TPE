@@ -14,20 +14,19 @@ class TaskController{
 
     function showHome(){ 
         $pilotos=$this->model->getPilotos();
-        $this->view->formAgregar($pilotos, "", "", 0, 0); 
-        $this->view->formAgregarPiloto();
-        $this->view->showHome();
-        $this->showVuelos();
+        $vuelos=$this->model->getVuelos();
+        $this->view->showHome($pilotos, $vuelos);
+        //$this->showVuelos();
     }
 
-    function showVuelos(){
+    /*function showVuelos(){ //arreglar nombre del piloto
         $vuelos=$this->model->getVuelos();
         foreach($vuelos as $vuelo){
             $piloto=$this->model->getPilotoDelVuelo($vuelo->id_piloto);
             $this->view->showVuelo($piloto, $vuelo);
         }
         $this->view->cerrarTabla();
-    }
+    }*/
 
     function showMas($id){
         $vuelo=$this->model->getVuelo($id);
@@ -36,22 +35,15 @@ class TaskController{
     }
 
     function showPilotos(){
-        $this->view->showHeaderPilotos();
         $pilotos=$this->model->getPilotos();
-        foreach($pilotos as $piloto){
-            $this->view->showPiloto($piloto);
-        }
-        $this->view->cerrarTabla();
+        $this->view->showPilotos($pilotos);
     }
 
     function showVuelosPiloto($id){
         $vuelos=$this->model->getVuelosDelPiloto($id);
         $piloto=$this->model->getPiloto($id);
         
-        $this->view->showHome();
-        foreach($vuelos as $vuelo){
-           $this->view->showVuelo($piloto, $vuelo); 
-        }
+        $this->view->showVuelosPiloto($piloto,$vuelos);
     }
 
     function showAgregarVuelo(){

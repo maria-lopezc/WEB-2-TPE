@@ -1,0 +1,24 @@
+<?php require 'templates/layout/header.phtml'; ?>
+
+<?php require 'templates/form_agregar.phtml';
+require 'templates/form_agregarPiloto.phtml';?>
+
+<h1>VUELOS</h1>
+    <table>
+        <tr>
+            <td style="font-size: 30px; color: red;">Piloto</td>
+            <td style="font-size: 30px; color: red;">Origen</td>
+            <td style="font-size: 30px; color: red;">Destino</td>
+        </tr>
+
+<?php foreach ($vuelos as $vuelo):
+    $piloto;
+    foreach ($pilotos as $pp) {
+        if ($pp->id_piloto === $vuelo->id_piloto) {
+            $piloto = $pp;
+            break; // Salimos del bucle una vez encontrado
+        }
+    }
+    require 'templates/vista_resumido.phtml';
+    endforeach ?>
+    </table>

@@ -1,17 +1,26 @@
-<?php require 'templates/layout/header.phtml'; ?>
-
-<h1>PILOTOS</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilotos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <?php require 'templates/layout/header.phtml'; ?>
+    <h1>PILOTOS</h1>
     <table>
+    <thead>
         <tr>
-            <td style="font-size: 25px; color: red;">Nombre</td>
-            <td style="font-size: 25px; color: red;">DNI</td>
-            <td style="font-size: 25px; color: red;">Fecha de Nacimiento</td>
-            <td style="font-size: 25px; color: red;">Email</td>
-            <td style="font-size: 25px; color: red;">Dirección</td>
-            <td style="font-size: 25px; color: red;">Teléfono</td>
-            <td style="font-size: 25px; color: red;">Número de Licencia</td>
+            <td>Nombre</td>
+            <td>DNI</td>
+            <td>Fecha de Nacimiento</td>
+            <td>Email</td>
+            <td>Dirección</td>
+            <td>Teléfono</td>
+            <td>Número de Licencia</td>
         </tr>
-
+    </thead>    
 <?php foreach($pilotos as $piloto): ?>
         <tr><td style="font-size:20px"><?=$piloto->nombre?></td>
             <td style="font-size:20px"><?=$piloto->dni?></td> 
@@ -24,5 +33,7 @@
             <td><a style="font-size:20px" href="editarPiloto/<?=$piloto->id_piloto?>">Editar<a></td>
             <td><a style="font-size:20px" href="eliminarPiloto/<?=$piloto->id_piloto?>" type="button">Borrar</a></td>
             </tr> 
-<?php endforeach ?>
+    <?php endforeach ?>
     </table>
+</body>
+</html>

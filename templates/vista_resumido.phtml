@@ -1,7 +1,7 @@
-<tr><td style="font-size:20px"><?= $piloto->nombre?></td>
-    <td style="font-size:20px"><?=$vuelo->origen?></td> 
-    <td style="font-size:20px"><?=$vuelo->destino?></td> 
-    <td ><a style="font-size:20px" href="<?=$base?>verVuelo/<?=$vuelo->id_vuelos?>">Ver más</a></td> 
-    <td><a style="font-size:20px" href="<?=$base?>editarVuelo/<?=$vuelo->id_vuelos?>">Editar<a></td> 
-    <td><a style="font-size:20px" href="<?=$base?>eliminarVuelo/<?=$vuelo->id_vuelos?>" type="button">Borrar</a></td>
+<tr><td><?= $piloto->nombre?></td>
+    <td><?=$vuelo->origen?></td> 
+    <td><?=$vuelo->destino?></td> 
+    <td ><a href="<?=$base?>verVuelo/<?=$vuelo->id_vuelos?>">Ver más</a></td> 
+    <td><a href="<?=$base?>editarVuelo/<?=$vuelo->id_vuelos?>">Editar<a></td> 
+    <td><a href="<?=$base?>eliminarVuelo/<?=$vuelo->id_vuelos?>" type="button">Borrar</a></td>
 </tr>

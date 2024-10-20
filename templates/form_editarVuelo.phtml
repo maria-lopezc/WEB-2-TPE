@@ -1,5 +1,14 @@
-<?php require 'templates/layout/header.phtml'; ?>
-<h3>Editar Vuelo:</h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Vuelo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <?php require 'templates/layout/header.phtml'; ?>
+    <h3>Editar Vuelo:</h3>
            <form action="<?php echo $base ?>" method="post">
             <label for="piloto">Piloto:</label> 
                 <select name='piloto' id="piloto">
@@ -15,3 +24,5 @@
             
             <button type="submit">Enviar</button>
     </form>
+</body>
+</html>

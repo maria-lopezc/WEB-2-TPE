@@ -9,7 +9,7 @@ $res=new Response();
 if(!empty ($_GET['action'])){
     $action=$_GET['action'];
 } else {
-    $action='login';
+    $action='home';
 }
 
 $params=explode("/",$action);

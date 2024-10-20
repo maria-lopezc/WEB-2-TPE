@@ -1,14 +1,24 @@
-<?php 
-require 'templates/layout/header.phtml';
-    if($error) : ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <?php require 'templates/layout/header.phtml';
+        if($error) : ?>
     <h2><?=$error?></h2>
-<?php endif ?>
+        <?php endif ?>
 
-<h1>Inicie sessión para continuar:</h1>
-<form action="<?= $base?>login" method="post">
-    Email: <input type="email" name="email" id="email" required>
-    Contraseña: <input type="password" name="contrasenia" id="contrasenia" required>
-    <button type="submit">Login</button>
-</form>
-<h3>¿No tiene cuenta?</h3>
-<a href="<?=$base?>showSignUp">Registrase</a>
+    <h1>Inicie sessión para continuar:</h1>
+    <form action="<?= $base?>login" method="post">
+        Email: <input type="email" name="email" id="email" required>
+        Contraseña: <input type="password" name="contrasenia" id="contrasenia" required>
+        <button type="submit">Login</button>
+    </form>
+    <h3>¿No tiene cuenta?</h3>
+    <a href="<?=$base?>showSignUp">Registrase</a>
+</body>
+</html>

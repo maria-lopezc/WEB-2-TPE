@@ -1,21 +1,32 @@
-<?php require 'templates/layout/header.phtml'; ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vuelos del piloto</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <?php require 'templates/layout/header.phtml'; ?>
     <table>
         <tr>
-            <td style="font-size: 30px; color: red;">Piloto</td>
-            <td style="font-size: 30px; color: red;">Origen</td>
-            <td style="font-size: 30px; color: red;">Destino</td>
-            <td style="font-size: 30px; color: red;">Cantidad de Pasajeros</td>
-            <td style="font-size: 30px; color: red;">Duración (horas)</td>
+            <td>Piloto</td>
+            <td>Origen</td>
+            <td>Destino</td> 
+            <td>Cantidad de Pasajeros</td>
+            <td>Duración (horas)</td>
         </tr>
 
 <?php foreach ($vuelos as $vuelo): ?>
-    <tr><td style="font-size:20px"><?= $piloto->nombre ?></td>
-    <td style="font-size:20px"><?= $vuelo->origen ?></td> 
-    <td style="font-size:20px"><?= $vuelo->destino ?></td> 
-    <td style="font-size:20px"><?= $vuelo->cant_pasajeros ?></td> 
-    <td style="font-size:20px"><?= $vuelo->duracion_vuelo ?></td>
-    <td><a style="font-size:20px" href="<?= $base ?>editarVuelo/<?= $vuelo->id_vuelos?>">Editar<a></td>
-    <td><a style="font-size:20px" href="<?= $base ?>eliminarVuelo/<?= $vuelo->id_vuelos?>" type="button">Borrar</a></td> 
+    <tr><td><?= $piloto->nombre ?></td>
+    <td><?= $vuelo->origen ?></td> 
+    <td><?= $vuelo->destino ?></td> 
+    <td><?= $vuelo->cant_pasajeros ?></td> 
+    <td><?= $vuelo->duracion_vuelo ?></td>
+    <td><a href="<?= $base ?>editarVuelo/<?= $vuelo->id_vuelos?>">Editar<a></td>
+    <td><a href="<?= $base ?>eliminarVuelo/<?= $vuelo->id_vuelos?>" type="button">Borrar</a></td> 
     </tr>
 <?php endforeach ?>
 </table>
+</body>
+</html>

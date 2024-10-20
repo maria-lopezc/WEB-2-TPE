@@ -1,10 +1,37 @@
 <?php
+require 'config/config.php';
 class TaskModel{
-    private $db;
+    protected $db;
 
     public function __construct(){
-        $this->db=new PDO('mysql:host=localhost;dbname=aerolinea;charset=utf8','root','');
+        $this->db = new PDO("mysql:host=".MYSQL_HOST .";dbname=".MYSQL_DB.";charset=utf8", MYSQL_USER, MYSQL_PASS);
+        $this->_deploy();
     }
+
+    private function _deploy() {
+        $query = $this->db->query('SHOW TABLES');
+        $tables = $query->fetchAll();
+        if(count($tables) == 0) {
+            $sql = <<<END
+            CREATE TABLE `login` (`id` int(11) NOT NULL,`email` varchar(250) NOT NULL,`contrasenia` char(60) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+            INSERT INTO `login` (`id`, `email`, `contrasenia`) VALUES
+            (1, 'admin@gmail.com', '$2y$10\$eeiwRGXGTBxNBUVq5icdv.g7PUlYAD1CSQq6vUgjqPhSiduQ051ia'),
+            (2, 'webadmin@gmail.com', '$2y$10\$gSuaKvEGPh/sV1kx/jCkdeUsF/Y9nn96KAuXeEB0mRQN8u6197RBe');
+            CREATE TABLE `pilotos` (`id_piloto` int(11) NOT NULL,`nombre` text NOT NULL,`dni` int(11) NOT NULL,`fecha_nacimiento` date NOT NULL,`gmail` varchar(50) NOT NULL,`direccion` text NOT NULL,`telefono` int(11) NOT NULL,`nro_licencia` int(11) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+            INSERT INTO `pilotos` (`id_piloto`, `nombre`, `dni`, `fecha_nacimiento`, `gmail`, `direccion`, `telefono`, `nro_licencia`) VALUES
+            (1, 'Jorge Perez', 30598140, '1983-03-19', 'jorgeperez@gmail.com', 'Panamá 150, Ezeiza', 112450328, 38820543),
+            (4, 'Pablo Sanchez', 31568863, '1985-06-08', 'PabloSanchez455j@gmail.com', 'Corrientes 1344, La Matanza', 542175313, 389000234);
+            CREATE TABLE `vuelos` (`id_vuelos` int(11) NOT NULL,`id_piloto` int(11) NOT NULL,`origen` text NOT NULL,`destino` text NOT NULL,`cant_pasajeros` int(11) NOT NULL,`duracion_vuelo` text NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+            INSERT INTO `vuelos` (`id_vuelos`, `id_piloto`, `origen`, `destino`, `cant_pasajeros`, `duracion_vuelo`) VALUES
+            (1, 4, 'Aeroparque, Arg', 'Rio De Janeiro, Br', 150, '2:30'),
+            (2, 1, 'Montevideo, Uru', 'Ezeiza, Arg', 100, '1'),
+            (15, 4, 'Ezeiza, Arg', 'Montevideo, Uru', 230, '3'),
+            (16, 1, 'Ezeiza, Arg', 'LA, EUU', 300, '12');
+            END;
+        $this->db->query($sql);
+        }
+    }
+
 
     public function getPilotos(){;
         $sentencia=$this->db->prepare("SELECT * FROM `pilotos`");
